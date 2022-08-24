@@ -21,12 +21,11 @@ app.get("/:token.jpg", (req: express.Request, res: express.Response) => {
   const { token } = req.params;
   if (!tokensMap.has(+token)) return res.status(404).end();
   const gear = tokensMap.get(+token);
-
   const filePath = path.join(
     __dirname,
     "../public/images/",
-    `${gear?.locked ? "unlocked" : "locked"}",
-    "/${gear?.type}.jpg`
+    `${gear?.locked ? "locked" : "unlocked"}`,
+    `/${token}.jpg`
   );
 
   const s = fs.createReadStream(filePath);

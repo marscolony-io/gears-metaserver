@@ -23,7 +23,7 @@ const NETWORK_DATA: Record<
     meta: "https://meta-fuji.marscolony.io/",
   },
   development: {
-    GEARS: "0x6dA84E178b4D726ac69967157b8b0A0Af97e1FC3",
+    GEARS: "0xA402d858154A99d86aADF5dFD749B33Be5d7d3a4",
     meta: "https://dev.marscolony.io/",
   },
 };

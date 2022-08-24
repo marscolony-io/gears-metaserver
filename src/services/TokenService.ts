@@ -35,7 +35,7 @@ const makeTokenData = (gear: Gear): TokenData => {
     lastUpdated: new Date(),
   };
 
-  console.log({ tokenData });
+  // console.log({ tokenData });
   return tokenData;
 };
 
@@ -46,7 +46,7 @@ export const updateLoop = async () => {
     const tempTokensMap: Map<number, TokenData> = new Map();
     await new Promise((rs) => setTimeout(rs, 5000));
     const tokensCount = parseInt(await gears.methods.totalSupply().call());
-    console.log("tokensCount", tokensCount);
+    // console.log("tokensCount", tokensCount);
     let i = 0;
     while (i <= tokensCount) {
       await new Promise((rs) => setTimeout(rs, 2000));
