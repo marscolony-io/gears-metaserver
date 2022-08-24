@@ -17,7 +17,7 @@ app.use((req: express.Request, res: express.Response, next: Function) => {
 });
 
 // image for a token
-app.get("/:token.png", (req: express.Request, res: express.Response) => {
+app.get("/:token.jpg", (req: express.Request, res: express.Response) => {
   const { token } = req.params;
   if (!tokensMap.has(+token)) return res.status(404).end();
   const gear = tokensMap.get(+token);
@@ -26,12 +26,12 @@ app.get("/:token.png", (req: express.Request, res: express.Response) => {
     __dirname,
     "../public/images/",
     `${gear?.locked ? "unlocked" : "locked"}",
-    "/${gear?.type}.png`
+    "/${gear?.type}.jpg`
   );
 
   const s = fs.createReadStream(filePath);
   s.on("open", () => {
-    res.set("Content-Type", "image/png");
+    res.set("Content-Type", "image/jpg");
     s.pipe(res);
   });
   s.on("error", () => {
