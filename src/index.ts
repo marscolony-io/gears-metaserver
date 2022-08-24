@@ -10,7 +10,7 @@ updateLoop();
 const app = express();
 app.use(cors());
 app.use((req: express.Request, res: express.Response, next: Function) => {
-  if (!req.url.endsWith(".png")) {
+  if (!req.url.endsWith(".jpg")) {
     console.log("ACCESS LOG", req.url);
   }
   next();

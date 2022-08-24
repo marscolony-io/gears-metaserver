@@ -97,7 +97,7 @@ export const getData = async (
 
   const tokenAttrs = tokensMap.get(tokenId)!;
 
-  const data: Attribute[] = [
+  const attributes: Attribute[] = [
     attribute("Data updated", tokenAttrs.lastUpdated.toUTCString()),
     attribute("Rarity", tokenAttrs.rarity),
     attribute("Type", tokenAttrs.type),
@@ -109,6 +109,6 @@ export const getData = async (
     name: `Marscolony.io gear #${tokenId}`,
     description: tokenAttrs.description,
     image: `${CONTRACTS.meta}${tokenId}.png`,
-    ...data,
+    attributes,
   };
 };
