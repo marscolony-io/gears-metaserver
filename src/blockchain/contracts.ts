@@ -1,17 +1,12 @@
 import Web3 from "web3";
 import { CONTRACTS } from "./contracts-addresses";
-import CLNY from "../abi/CLNY.json";
 import GEARS from "../abi/GEARS.json";
-import MC from "../abi/MC.json";
-import GM from "../abi/GameManager.json";
-import LANDSTATS from "../abi/LandStats.json";
 import { AbiItem } from "web3-utils";
 import { ALCHEMY_KEY } from "../secrets";
 import { environment } from "../environment";
 
 const nodeMap = {
-  hartest: ["https://api.s0.b.hmny.io"],
-  harmain: [
+  harmony: [
     "https://harmony-0-rpc.gateway.pokt.network",
     "https://api.harmony.one",
     "https://api.fuzz.fi",

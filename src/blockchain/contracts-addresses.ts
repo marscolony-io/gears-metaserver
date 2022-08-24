@@ -6,11 +6,7 @@ const NETWORK_DATA: Record<
     meta: string;
   }
 > = {
-  hartest: {
-    GEARS: "",
-    meta: "https://meta.marscolony.io/",
-  },
-  harmain: {
+  harmony: {
     GEARS: "",
     meta: "https://meta.marscolony.io/",
   },

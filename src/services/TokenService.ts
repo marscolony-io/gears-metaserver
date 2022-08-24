@@ -1,10 +1,11 @@
-import { stringify } from "querystring";
 import { gears } from "../blockchain/contracts";
 import { CONTRACTS } from "../blockchain/contracts-addresses";
 import { Attribute } from "../types";
+import { categories, gearsData, rarities } from "./constants";
 
 type TokenData = {
   type: string;
+  description: string;
   rarity: string;
   durability: number;
   category: string;
@@ -21,32 +22,12 @@ type Gear = [
   set: boolean
 ];
 
-const tokenNames = [
-  "Rocket Fuel",
-  "Engine Furious",
-  "WD-40",
-  "Titanium Drill",
-  "Diamond Drill",
-  "Laser Drill",
-  "Small Area Scanner",
-  "Medium Area Scanner",
-  "Large Area Scanner",
-  "Ultrasonic Transmitter",
-  "Vibration Transmitter",
-  "The Nebuchadnezzar",
-  "The Wraith",
-  "The Polyminer",
-];
+export let tokensMap: Map<number, TokenData> = new Map();
 
-const rarities = ["Common", "Rare", "Legendary"];
-
-const categories = ["Engine", "Drill", "Scanner", "Transmitter", "Transport"];
-
-export const tokensMap: Map<number, TokenData> = new Map();
-
-const setTokenData = (tokenId: number, gear: Gear) => {
+const makeTokenData = (gear: Gear): TokenData => {
   const tokenData: TokenData = {
-    type: tokenNames[+gear[1]],
+    type: gearsData[+gear[1]].type,
+    description: gearsData[+gear[1]].description,
     rarity: rarities[+gear[0]],
     category: categories[+gear[2]],
     durability: +gear[3],
@@ -55,13 +36,14 @@ const setTokenData = (tokenId: number, gear: Gear) => {
   };
 
   console.log({ tokenData });
-  tokensMap.set(tokenId, tokenData);
+  return tokenData;
 };
 
 export const updateLoop = async () => {
   console.log("loop");
   const BUNCH_SIZE = 500;
   while (true) {
+    const tempTokensMap: Map<number, TokenData> = new Map();
     await new Promise((rs) => setTimeout(rs, 5000));
     const tokensCount = parseInt(await gears.methods.totalSupply().call());
     console.log("tokensCount", tokensCount);
@@ -75,7 +57,7 @@ export const updateLoop = async () => {
           .call();
 
         data["0"].forEach((tokenId: string, index: number) => {
-          setTokenData(+tokenId, data["1"][index]);
+          tempTokensMap.set(+tokenId, makeTokenData(data["1"][index]));
         });
 
         i = i + BUNCH_SIZE;
@@ -83,6 +65,7 @@ export const updateLoop = async () => {
         console.log("data", error.message);
       }
     }
+    tokensMap = tempTokensMap;
   }
 };
 
@@ -105,7 +88,7 @@ export const getData = async (
       console.log({ gear });
       if (!gear.set) return null;
       console.log("WITHOUT CACHE", gear);
-      setTokenData(tokenId, gear);
+      tokensMap.set(+tokenId, makeTokenData(gear));
     } catch (error: any) {
       console.log(error.message);
       return null;
@@ -124,7 +107,7 @@ export const getData = async (
   ];
   return {
     name: `Marscolony.io gear #${tokenId}`,
-    description: "", // ???
+    description: tokenAttrs.description,
     image: `${CONTRACTS.meta}${tokenId}.png`,
     ...data,
   };

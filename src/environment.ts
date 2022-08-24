@@ -12,7 +12,7 @@ export type Environment = {
 
 export const environment = cleanEnv(process.env, {
   NETWORK: str({
-    choices: ["hartest", "mumbai", "polygon", "fuji", "development"],
+    choices: ["harmony", "mumbai", "polygon", "fuji", "development"],
   }),
   PORT: num({ default: 8000 }),
 });
