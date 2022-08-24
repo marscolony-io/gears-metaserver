@@ -43,7 +43,7 @@ app.get("/:token.jpg", (req: express.Request, res: express.Response) => {
 app.get("/:token", (req: express.Request, res: express.Response) => {
   const { token } = req.params;
   const tokenNumber = parseInt(token);
-  if (Number.isNaN(tokenNumber) || tokenNumber < 1 || tokenNumber > 21000) {
+  if (Number.isNaN(tokenNumber) || tokenNumber < 1) {
     res.status(404).end();
     return;
   }
