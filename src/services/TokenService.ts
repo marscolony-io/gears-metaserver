@@ -4,6 +4,7 @@ import { Attribute } from "../types";
 import { categories, gearsData, rarities } from "./constants";
 
 type TokenData = {
+  imageId: number;
   type: string;
   description: string;
   rarity: string;
@@ -27,6 +28,7 @@ export let tokensMap: Map<number, TokenData> = new Map();
 const makeTokenData = (gear: Gear): TokenData => {
   const tokenData: TokenData = {
     type: gearsData[+gear[1]].type,
+    imageId: +gear[1],
     description: gearsData[+gear[1]].description,
     rarity: rarities[+gear[0]],
     category: categories[+gear[2]],
@@ -108,7 +110,7 @@ export const getData = async (
   return {
     name: `Marscolony.io gear #${tokenId}`,
     description: tokenAttrs.description,
-    image: `${CONTRACTS.meta}${tokenId}.png`,
+    image: `${CONTRACTS.meta}${tokenId}.jpg`,
     attributes,
   };
 };
