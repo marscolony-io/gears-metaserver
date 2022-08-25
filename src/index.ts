@@ -25,7 +25,7 @@ app.get("/:token.jpg", (req: express.Request, res: express.Response) => {
     __dirname,
     "../public/images/",
     `${gear?.locked ? "locked" : "unlocked"}`,
-    `/${token}.jpg`
+    `/${+gear.type}.jpg`
   );
 
   const s = fs.createReadStream(filePath);
