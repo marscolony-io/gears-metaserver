@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import { CONTRACTS } from "./contracts-addresses";
-import GEARS from "../abi/GEARS.json";
+import GEARS from "../abi/Gears.json";
 import { AbiItem } from "web3-utils";
 import { ALCHEMY_KEY } from "../secrets";
 import { environment } from "../environment";
