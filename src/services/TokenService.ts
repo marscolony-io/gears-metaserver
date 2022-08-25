@@ -6,6 +6,7 @@ import { categories, gearsData, rarities } from "./constants";
 type TokenData = {
   imageId: number;
   type: string;
+  buff: string;
   description: string;
   rarity: string;
   durability: number;
@@ -29,6 +30,7 @@ const makeTokenData = (gear: Gear): TokenData => {
   const tokenData: TokenData = {
     type: gearsData[+gear[1]].type,
     imageId: +gear[1],
+    buff: gearsData[+gear[1]].buff,
     description: gearsData[+gear[1]].description,
     rarity: rarities[+gear[0]],
     category: categories[+gear[2]],
@@ -102,13 +104,14 @@ export const getData = async (
   const attributes: Attribute[] = [
     attribute("Data updated", tokenAttrs.lastUpdated.toUTCString()),
     attribute("Rarity", tokenAttrs.rarity),
-    attribute("Type", tokenAttrs.type),
-    attribute("Category", tokenAttrs.category),
+    attribute("Buff", tokenAttrs.buff),
+    attribute("Name", tokenAttrs.type),
+    attribute("Type", tokenAttrs.category),
     attribute("Durability", tokenAttrs.durability),
     attribute("Locked", tokenAttrs.locked),
   ];
   return {
-    name: `Marscolony.io gear #${tokenId}`,
+    name: `${tokenAttrs.type} #${tokenId}`,
     description: tokenAttrs.description,
     image: `${CONTRACTS.meta}${tokenId}.jpg`,
     attributes,
