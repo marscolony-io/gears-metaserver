@@ -7,7 +7,7 @@ const NETWORK_DATA: Record<
   }
 > = {
   harmony: {
-    GEARS: "0x4d689cC313d08227Fc3FD10Cf235C80A6C5140c6",
+    GEARS: "0xc909dbAFf39b0DfD35F398459335aD98B7A0f3AE",
     meta: "https://gears-harmony.marscolony.io/",
   },
   polygon: {
