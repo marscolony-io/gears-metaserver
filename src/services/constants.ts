@@ -17,7 +17,7 @@ export const gearsData: gearDescription[] = [
     buff: "+ 6 moves in mission",
   },
   {
-    type: "WD-40",
+    type: "WD-04",
     description:
       "The spray, composed of various hydrocarbons, was originally designed to be used by Convair to protect the outer skin of the Atlas missile from rust and corrosion.",
     buff: "+ 10 moves in mission",
