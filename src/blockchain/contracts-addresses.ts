@@ -19,7 +19,7 @@ const NETWORK_DATA: Record<
     meta: "https://gears-mumbai.marscolony.io/",
   },
   fuji: {
-    GEARS: "0x54d4bf6035D6fD5C1f06A01A382C2Fe91CA6dA80",
+    GEARS: "0x98Ef6554fA8f009b3330488B10649dEf50a5690a",
     meta: "https://gears-fuji.marscolony.io/",
   },
   development: {
