@@ -19,12 +19,13 @@ app.use((req: express.Request, res: express.Response, next: Function) => {
 // image for a token
 app.get("/:token.jpg", (req: express.Request, res: express.Response) => {
   const { token } = req.params;
+  const { locked = false } = req.query;
   if (!tokensMap.has(+token)) return res.status(404).end();
   const gear = tokensMap.get(+token);
   const filePath = path.join(
     __dirname,
     "../public/images/",
-    `${gear?.locked ? "locked" : "unlocked"}`,
+    `${locked ? "locked" : "unlocked"}`,
     `/${+gear!.imageId}.jpg`
   );
 
