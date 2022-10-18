@@ -11,11 +11,11 @@ const NETWORK_DATA: Record<
     meta: "https://gears-harmony.marscolony.io/",
   },
   polygon: {
-    GEARS: "",
+    GEARS: "0x1a33FAC010248AFcA0741f5c10acaBA0e3CA6814",
     meta: "https://gears-polygon.marscolony.io/",
   },
   mumbai: {
-    GEARS: "",
+    GEARS: "0xBa83d3db8124689c3498A5C578f892A6058556Fb",
     meta: "https://gears-mumbai.marscolony.io/",
   },
   fuji: {

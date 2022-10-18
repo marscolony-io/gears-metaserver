@@ -113,7 +113,7 @@ export const getData = async (
   return {
     name: `${tokenAttrs.type} #${tokenId}`,
     description: tokenAttrs.description,
-    image: `${CONTRACTS.meta}${tokenId}.jpg`,
+    image: `${CONTRACTS.meta}${tokenId}.jpg${tokenAttrs.locked ? '?locked=true' : ''}`,
     attributes,
   };
 };
